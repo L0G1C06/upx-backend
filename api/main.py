@@ -2,7 +2,12 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 import uvicorn
 
+from routes import backend, connect
+
 app = FastAPI()
+
+app.include_router(backend.router)
+app.include_router(connect.router)
 
 @app.get("/")
 async def read_root():
